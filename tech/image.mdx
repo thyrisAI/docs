@@ -1,0 +1,98 @@
+---
+title: "/api/image"
+categories: ['docs']
+status: "published"
+---
+
+# <span style={{ color: '#6CA0DC' }}>`POST /api/image`</span>
+
+The `/api/image` endpoint allows you to send requests for generating high quality images.
+
+---
+
+## **Endpoint Details**
+- **Method:** <span style={{ color: '#6CA0DC' }}>`POST`</span>  
+- **Authorization:** `Bearer <your_api_key>`  
+- **Content-Type:** `application/json`  
+
+---
+
+## **Parameters**
+<table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'auto' }}>
+  <thead>
+    <tr style={{ }}>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Field</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Type</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Required</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Default</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`prompt`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`string`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`True`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`N/A`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Prompt to generate the image.</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`seed`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`integer`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`False`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`0`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Seed to be used in generation. Range: `0` (inclusive) - `10000000000` (inclusive)</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`steps`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`integer`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`False`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`4`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>How many steps to generate. Higher the steps, higher the quality. Range: `1` (inclusive) - `6` (inclusive)</td>
+      </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`width`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`integer`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`False`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`512`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Width of the generated image. Range: `128` (inclusive) - `4096` (inclusive)</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`height`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`integer`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`False`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>`512`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Height of the generated image. Range: `128` (inclusive) - `4096` (inclusive)</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## **Returns**
+<table style={{ width: '100%' }}>
+  <thead>
+    <tr style={{ }}>
+      <th style={{ border: '1px solid #dddddd', padding: '8px' }}>Field</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px' }}>Type</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`created_at`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`integer`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Time the image was created.</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`base64_image`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`string`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>The image created in the format of `base64 image/png`.</td>
+    </tr>
+  </tbody>
+</table>
+
+## **Response Codes**
+
+- <span style={{ color: '#50E3C2'}}>`200`</span>
+- <span style={{ color: '#FF6B6B'}}>`400`</span>
+- <span style={{ color: '#FF6B6B'}}>`404`</span>

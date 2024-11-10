@@ -1,0 +1,97 @@
+---
+title: "/api/text"
+categories: ['docs']
+status: "published"
+---
+
+# <span style={{ color: '#50E3C2' }}>`GET /api/text`</span>
+
+The `/api/text` endpoint allows you to send requests for both **text-to-text** and **text-image-to-text** models.
+
+---
+
+## **Endpoint Details**
+- **Method:** <span style={{ color: '#50E3C2' }}>`GET`</span>  
+- **Authorization:** `Bearer <your_api_key>`  
+- **Content-Type:** `application/json`  
+
+---
+
+## **Parameters**
+<table style={{ width: '100%', borderCollapse: 'collapse', tableLayout: 'auto' }}>
+  <thead>
+    <tr style={{ }}>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Field</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Type</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Required</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px', textAlign: 'left' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>model</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>string</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>True</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Name of the model to be used. Example: <code>llama3.2:3b</code>.</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>system_prompt</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>string</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>False</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>The system prompt to pass into the LLM. Default: `You're a helpful assistant.`</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>input</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>string</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>True</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Your input to the LLM.</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>chat_history</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>string[][]</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>False</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Array of conversation tuples <code>[[user_msg, llm_msg]]</code> to pass a chat history.</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>images</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}><code>string[]</code></td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px', whiteSpace: 'nowrap' }}>False</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Array of image URLs <code>["example.com/example.jpg"]</code>. Requires a vision model.</td>
+    </tr>
+  </tbody>
+</table>
+
+
+## **Returns**
+<table style={{ width: '100%' }}>
+  <thead>
+    <tr style={{ }}>
+      <th style={{ border: '1px solid #dddddd', padding: '8px' }}>Field</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px' }}>Type</th>
+      <th style={{ border: '1px solid #dddddd', padding: '8px' }}>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`model`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`string`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Name of the model used. Ex: `llama3.2:3b`.</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`created_at`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`integer`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Time the message was created.</td>
+    </tr>
+    <tr>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`message`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>`string`</td>
+      <td style={{ border: '1px solid #dddddd', padding: '8px' }}>Response from the LLM.</td>
+    </tr>
+  </tbody>
+</table>
+
+## **Response Codes**
+
+- <span style={{ color: '#50E3C2'}}>`200`</span>
+- <span style={{ color: '#FF6B6B'}}>`400`</span>
+- <span style={{ color: '#FF6B6B'}}>`500`</span>
